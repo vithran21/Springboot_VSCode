@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task</title>
+    <style>
+        body, div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: chocolate;
+        }
+        input{
+            border: 1px solid black;
+        }
+        .op-btn{
+            border-radius: 20%;
+            background-color: cornflowerblue;
+            font-size: large;
+        }
+        .calc{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 5px;
+            border: 2px double green;
+        }
+        #outerdiv{
+            padding: 10px;
+            border: 2px solid maroon;
+        }
+    </style>
+</head>
+<body>
+    <div id="outerdiv">
+    <div>
+        <a href="/otp"><button>OTP</button></a> <span th:if="${otp}" th:text="'The OTP is '+${otp}"></span>
+        
+      </div>
+      <br>
+      <div>
+        <a href="/toss"><button>Toss</button></a> <span th:if="${toss}" th:text="'Coin is tossed, and it is '+${toss}"></span>
+        
+      </div>
+      <br>
+      <div>
+        <a href="/random-color"><button>Random Color</button></a>
+        <br>
+        <div th:if="${randomcolor}" th:style="'border: 2px solid black; height: 100px; width: 100px; background-color:'+${randomcolor}"></div>
+      </div>
+      <br>
+      <div>
+        <form action="/wish">
+          <input type="text" name="message" placeholder="Enter Message" th:value="${message}">
+          <input type="color" name="color" th:style="'color:'+${color}">
+          <button>Done</button>
+          <input type="text" th:value="${message}" th:style="'color:'+${color}">
+        </form>
+      </div>
+<br><br>
+      <div class="calc">
+        <form action="/calculate">
+          <input class="num" type="number" name="num1" th:value="${num1}">
+          <input class="num" type="number" name="num2" th:value="${num1}">
+          <br>
+          <button class="op-btn" name="operation" value="add">+</button>
+          <button class="op-btn" name="operation" value="sub">-</button>
+          <button class="op-btn" name="operation" value="mul">X</button>
+          <button class="op-btn" name="operation" value="div">/</button>
+        </form>
+        <input type="text" th:value="${result}" name="result">
+      </div>
+    </div>
+</div>
+</body>
+</html>
